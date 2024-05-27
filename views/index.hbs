@@ -4,8 +4,8 @@
   <ul>
     {{#each employees}}
       <li>
-        <a href="/employee/{{this.id}}" hx-get="/employee/{{this.id}}" hx-target="#employee-details" hx-swap="innerHTML">
-          {{this.name}} - {{this.role}}
+        <a href="/employee/{{this.EmpID}}" hx-get="/employee/{{this.EmpID}}" hx-target="#employee-details" hx-swap="innerHTML">
+          {{this.Name}} - {{this.Practice}}
         </a>
       </li>
     {{/each}}

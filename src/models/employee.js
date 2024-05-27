@@ -39,8 +39,43 @@ const addEmployee = async (employee) => {
   }
 };
 
+const getBenchedEmployees = async () => {
+  try {
+    const request = new sql.Request();
+    //declare a string constant for the query
+    const query = `
+    SELECT [EmpID]
+    ,[Grade]
+    ,[Practice]
+    ,[Name]
+    ,[BH ID]
+    ,[UserName]
+    ,[Availability]
+    ,[Primary Project]
+    ,[Backup Project]
+    ,[Employee Bench Notes]
+    ,[Location]
+    ,[Last Project]
+    ,[Last day in project]
+    ,[Last Project Status Name]
+    ,[OnBenchSince]
+    ,[Weeks On Bench]
+    ,[Resume]
+    ,[Rejections]
+    ,[Project Bench Notes]
+FROM [dbo].[BENCHMANAGEMENT]`;
+
+    const result = await request.query(query);
+    return result.recordset;
+  } catch (err) {
+    console.error('Error fetching employees:', err);
+    throw err;
+  }
+};
+
 module.exports = {
   getEmployees,
   getEmployeeById,
   addEmployee,
+  getBenchedEmployees,
 };
