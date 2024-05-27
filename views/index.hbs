@@ -1,16 +1,51 @@
 <div class="container mx-auto p-4">
-  <h1 class="text-3xl font-bold">Welcome to BenchCoach</h1>
-  <p>Manage your employee bench efficiently.</p>
-  <ul>
-    {{#each employees}}
-      <li>
-        <a href="/employee/{{this.EmpID}}" hx-get="/employee/{{this.EmpID}}" hx-target="#employee-details" hx-swap="innerHTML">
-          {{this.Name}} - {{this.Practice}}
-        </a>
-      </li>
-    {{/each}}
-  </ul>
-  <div id="employee-details" class="mt-4">
-    <!-- Employee details will be loaded here dynamically -->
+  <h1 class="text-3xl font-bold">Welcome to BenchCoach</h1>  
+  <div class="rounded-t-lg shadow-lg overflow-hidden">
+    <table class="min-w-full bg-white">
+      <thead class="bg-gray-400 text-xs rounded-t-lg">
+        <tr>
+          <th class="py-2 px-4 border-b">Name</th>
+          <th class="py-2 px-4 border-b">Grade</th>
+          <th class="py-2 px-4 border-b">Practice</th>
+          <!--<th class="py-2 px-4 border-b">UserName</th>-->
+          <th class="py-2 px-4 border-b">Availability</th>
+          <th class="py-2 px-4 border-b">Primary Project</th>
+          <th class="py-2 px-4 border-b">Backup Project</th>
+          <th class="py-2 px-4 border-b">Employee Bench Notes</th>
+          <th class="py-2 px-4 border-b">Location</th>
+          <th class="py-2 px-4 border-b">Last Project</th>
+          <th class="py-2 px-4 border-b">Last Day in Project</th>
+          <th class="py-2 px-4 border-b">Last Project Status Name</th>
+          <th class="py-2 px-4 border-b">On Bench Since</th>
+          <th class="py-2 px-4 border-b">Weeks On Bench</th>          
+          <th class="py-2 px-4 border-b">Rejections</th>
+          <th class="py-2 px-4 border-b">Project Bench Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each employees}}
+          <tr class="even:bg-gray-200 odd:bg-white text-sm">
+            <td class="py-2 px-4 border-b"><a href="/employee/{{this.EmpID}}" hx-get="/employee/{{this.EmpID}}" hx-target="#employee-details" hx-swap="innerHTML">{{this.Name}}</a></td>
+            <td class="py-2 px-4 border-b text-xs">{{this.Grade}}</td>
+            <td class="py-2 px-4 border-b">{{this.Practice}}</td>
+            <!--<td class="py-2 px-4 border-b">{{getField this 'BH ID'}}</td>-->
+            <!--<td class="py-2 px-4 border-b">{{this.UserName}}</td>-->
+            <td class="py-2 px-4 border-b">{{this.Availability}}</td>
+            <td class="py-2 px-4 border-b">{{getField this 'Primary Project'}}</td>
+            <td class="py-2 px-4 border-b">{{getField this 'Backup Project'}}</td>
+            <td class="py-2 px-4 border-b">{{getField this 'Employee Bench Notes'}}</td>
+            <td class="py-2 px-4 border-b">{{this.Location}}</td>
+            <td class="py-2 px-4 border-b">{{getField this 'Last Project'}}</td>
+            <td class="py-2 px-4 border-b">{{getField this 'Last day in project'}}</td>
+            <td class="py-2 px-4 border-b">{{getField this 'Last Project Status Name'}}</td>
+            <td class="py-2 px-4 border-b text-xs">{{formatDate this.OnBenchSince}}</td>
+            <td class="py-2 px-4 border-b">{{getField this 'Weeks On Bench'}}</td>
+            <!--<td class="py-2 px-4 border-b">{{this.Resume}}</td> Resume should be on details screen-->
+            <td class="py-2 px-4 border-b">{{this.Rejections}}</td>
+            <td class="py-2 px-4 border-b text-xs">{{getField this 'Project Bench Notes'}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </div>

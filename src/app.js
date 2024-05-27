@@ -6,6 +6,7 @@ const sql = require('mssql');
 require('dotenv').config();
 const livereload = require('livereload');
 const connectLivereload = require('connect-livereload');
+const { format } = require('date-fns');
 
 // Setup LiveReload server
 const liveReloadServer = livereload.createServer();
@@ -17,7 +18,15 @@ const app = express();
 app.use(connectLivereload());
 
 // Set up Handlebars
-app.engine('hbs', hbs.engine({ extname: 'hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname, '../views/layouts') }));
+app.engine('hbs', hbs.engine({ 
+  extname: 'hbs',
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, '../views/layouts'),
+  helpers: {
+    getField: (obj, field) => obj[field],
+    formatDate: (date) => format(new Date(date), 'EEE, MMM do yyyy')
+  }
+}));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '../views'));
 

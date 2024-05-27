@@ -11,13 +11,17 @@
 <body class="flex flex-col h-screen">
   <!-- Top Bar -->
   <header class="bg-gray-600 text-white p-4 flex justify-between items-center">
-    <div class="text-lg font-bold">
+    <div class="text-lg font-bold flex flex-row">
       <img
             src="./assets/Apex_logo_horizontal_white.png"
             alt="Logo"
             class="h-8 mr-4"
         />
-      BenchCoach</div>
+        <div class="flex flex-col">
+          <span>BenchCoach</span>
+          <p class="text-xs text-gray-300 font-thin">Manage Apex Bench Efficiently</p>
+        </div>      
+    </div>
     <div class="flex items-center">
       <input type="text" placeholder="Search..." class="p-2 rounded bg-white text-black">
       <div class="ml-4">User Profile</div>
@@ -27,20 +31,25 @@
   <!-- Main Content Area -->
   <div class="flex flex-1">
     <!-- Sidebar -->
-    <aside class="bg-gray-800 text-white w-64 p-4">
-      <nav>
-        <ul>
-          <li class="mb-2"><a href="/" class="block p-2 hover:bg-gray-700">Dashboard</a></li>
-          <li class="mb-2"><a href="/employees" class="block p-2 hover:bg-gray-700">Employees</a></li>
-          <li class="mb-2"><a href="/projects" class="block p-2 hover:bg-gray-700">Projects</a></li>
-          <li class="mb-2"><a href="/reports" class="block p-2 hover:bg-gray-700">Reports</a></li>
-          <li class="mb-2"><a href="/settings" class="block p-2 hover:bg-gray-700">Settings</a></li>
-        </ul>
-      </nav>
-    </aside>
+   <aside class="bg-gray-800 text-white w-64 p-4 flex flex-col items-center">
+  <div class="text-center mb-4">
+    <img src="https://thispersondoesnotexist.com/" alt="User Profile Pic" class="w-20 h-20 rounded-full mx-auto border-solid border-2 border-sky-500 mb-2">
+    <h2 class="text-xl font-semibold">{{userName}}</h2>
+  </div>
+  <nav class="w-full">
+    <ul class="w-full">
+      <li class="mb-2"><a href="/" class="block p-2 hover:bg-gray-700">Dashboard</a></li>
+      <li class="mb-2"><a href="/employees" class="block p-2 hover:bg-gray-700">Employees</a></li>
+      <li class="mb-2"><a href="/projects" class="block p-2 hover:bg-gray-700">Projects</a></li>
+      <li class="mb-2"><a href="/reports" class="block p-2 hover:bg-gray-700">Reports</a></li>
+      <li class="mb-2"><a href="/darkbench" class="block p-2 hover:bg-gray-700">Dark Bench</a></li>
+      <li class="mb-2"><a href="/settings" class="block p-2 hover:bg-gray-700">Settings</a></li>
+    </ul>
+  </nav>
+</aside>
 
     <!-- Main Content -->
-    <main class="flex-1 p-4">
+    <main class="flex-1 p-4 overflow-x-auto overflow-y-auto">
       {{{body}}}
     </main>
   </div>

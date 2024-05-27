@@ -5,7 +5,7 @@ const employeeModel = require('./models/employee');
 router.get('/', async (req, res) => {
   try {
     const employees = await employeeModel.getBenchedEmployees();
-    res.render('index', { title: 'BenchCoach', employees });
+    res.render('index', { title: 'BenchCoach', employees, userName:"Taylor Smith" });
   } catch (err) {
     res.status(500).send('Error fetching employees');
   }
