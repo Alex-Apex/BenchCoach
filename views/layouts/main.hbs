@@ -6,8 +6,43 @@
   <title>{{title}}</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <script src="https://unpkg.com/htmx.org@1.7.0"></script>
 </head>
-<body>
-  {{{body}}}
+<body class="flex flex-col h-screen">
+  <!-- Top Bar -->
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <div class="text-lg font-bold">
+      <img
+            src="./assets/Apex_logo_horizontal_white.png"
+            alt="Logo"
+            class="h-8 mr-4"
+        />
+      BenchCoach</div>
+    <div class="flex items-center">
+      <input type="text" placeholder="Search..." class="p-2 rounded bg-white text-black">
+      <div class="ml-4">User Profile</div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <div class="flex flex-1">
+    <!-- Sidebar -->
+    <aside class="bg-gray-800 text-white w-64 p-4">
+      <nav>
+        <ul>
+          <li class="mb-2"><a href="/" class="block p-2 hover:bg-gray-700">Dashboard</a></li>
+          <li class="mb-2"><a href="/employees" class="block p-2 hover:bg-gray-700">Employees</a></li>
+          <li class="mb-2"><a href="/projects" class="block p-2 hover:bg-gray-700">Projects</a></li>
+          <li class="mb-2"><a href="/reports" class="block p-2 hover:bg-gray-700">Reports</a></li>
+          <li class="mb-2"><a href="/settings" class="block p-2 hover:bg-gray-700">Settings</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4">
+      {{{body}}}
+    </main>
+  </div>
 </body>
 </html>

@@ -1,4 +1,16 @@
 <div class="container mx-auto p-4">
   <h1 class="text-3xl font-bold">Welcome to BenchCoach</h1>
   <p>Manage your employee bench efficiently.</p>
+  <ul>
+    {{#each employees}}
+      <li>
+        <a href="/employee/{{this.id}}" hx-get="/employee/{{this.id}}" hx-target="#employee-details" hx-swap="innerHTML">
+          {{this.name}} - {{this.role}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+  <div id="employee-details" class="mt-4">
+    <!-- Employee details will be loaded here dynamically -->
+  </div>
 </div>

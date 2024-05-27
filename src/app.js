@@ -3,9 +3,18 @@ const hbs = require('express-handlebars');
 const path = require('path');
 const routes = require('./routes');
 const sql = require('mssql');
-require('dotenv').config(); // Load environment variables
+require('dotenv').config();
+const livereload = require('livereload');
+const connectLivereload = require('connect-livereload');
 
+// Setup LiveReload server
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, '../public'));
+liveReloadServer.watch(path.join(__dirname, '../views'));
+
+// Setup LiveReload middleware
 const app = express();
+app.use(connectLivereload());
 
 // Set up Handlebars
 app.engine('hbs', hbs.engine({ extname: 'hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname, '../views/layouts') }));
