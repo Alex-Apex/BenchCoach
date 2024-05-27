@@ -16,8 +16,7 @@
           <th class="py-2 px-4 border-b">Last Project</th>
           <th class="py-2 px-4 border-b">Last Day in Project</th>
           <th class="py-2 px-4 border-b">Last Project Status Name</th>
-          <th class="py-2 px-4 border-b">On Bench Since</th>
-          <th class="py-2 px-4 border-b">Weeks On Bench</th>          
+          <th class="py-2 px-4 border-b min-w-52">Bench Tenure Info</th>          
           <th class="py-2 px-4 border-b">Rejections</th>
           <th class="py-2 px-4 border-b">Project Bench Notes</th>
         </tr>
@@ -38,8 +37,12 @@
             <td class="py-2 px-4 border-b">{{getField this 'Last Project'}}</td>
             <td class="py-2 px-4 border-b">{{getField this 'Last day in project'}}</td>
             <td class="py-2 px-4 border-b">{{getField this 'Last Project Status Name'}}</td>
-            <td class="py-2 px-4 border-b text-xs">{{formatDate this.OnBenchSince}}</td>
-            <td class="py-2 px-4 border-b">{{getField this 'Weeks On Bench'}}</td>
+            <td class="py-2 px-4 border-b min-w-52">
+              <div class="flex flex-col">
+                <span>{{getField this 'Weeks On Bench'}} wks</span>
+                <div class="text-xs">{{formatDate this.OnBenchSince}}</div>
+              </div>
+            </td>            
             <!--<td class="py-2 px-4 border-b">{{this.Resume}}</td> Resume should be on details screen-->
             <td class="py-2 px-4 border-b">{{this.Rejections}}</td>
             <td class="py-2 px-4 border-b text-xs">{{getField this 'Project Bench Notes'}}</td>
